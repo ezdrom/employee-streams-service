@@ -87,6 +87,12 @@ public class UserService {
                    .max();  // Returns OptionalDouble in case list is empty
     }
     
+    public OptionalDouble getLowestSalary() {
+        return users.stream()
+                    .mapToDouble(User:: getSalary)
+                    .min(); // Returns Optional Double in case list is empty
+    }
+    
     /**
      * COMPLEX OPERATION: Group users by department and count them
      * collect() with Collectors.groupingBy() for advanced data manipulation

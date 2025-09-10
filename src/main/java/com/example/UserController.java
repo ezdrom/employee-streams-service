@@ -59,6 +59,16 @@ public class UserController {
             return "No users found";
         }
     }
+
+    @GetMapping("/salary/lowest")
+    public String getLowestSalary() {
+        OptionalDouble LowestSalary = userService.getLowestSalary();
+        if (LowestSalary.isPresent()) {
+            return "Lowest salary: $" + LowestSalary.getAsDouble();
+        } else {
+            return "No users found";
+        }
+    }
     
     @GetMapping("/stats/count-by-department")
     public Map<String, Long> getUserCountByDepartment() {
