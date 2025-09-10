@@ -96,4 +96,9 @@ public class UserController {
     public boolean hasUserOver40() {
         return userService.hasUserOver40();
     }
+
+    @GetMapping("/over-30-in-EngineeringDept")
+    public List<String> getMillenialsInEngineeringDept(){
+        return userService.getMillenialsInEngineeringDept();
+    }
 }

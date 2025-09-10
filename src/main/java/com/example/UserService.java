@@ -92,7 +92,7 @@ public class UserService {
                     .mapToDouble(User:: getSalary)
                     .min(); // Returns Optional Double in case list is empty
     }
-    
+
     /**
      * COMPLEX OPERATION: Group users by department and count them
      * collect() with Collectors.groupingBy() for advanced data manipulation
@@ -127,6 +127,17 @@ public class UserService {
                    .limit(3)                                  // Take only first 3
                    .map(User::getName)                        // Get their names
                    .collect(Collectors.toList());
+    }
+
+    // Get names of active users in Engineering Department whose age is above 30.
+
+    public List<String> getMillenialsInEngineeringDept(){
+        return users.stream()
+                   .filter(user -> user.isActive())           // First condition
+                   .filter(user -> "Engineering".equals(user.getDepartment())) // Second condition
+                   .filter(user -> user.getAge() > 30)  
+                   .map(User::getName)
+                   .collect(Collectors.toList()); 
     }
     
     /**
